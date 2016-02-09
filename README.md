@@ -1,5 +1,7 @@
 
-Write a “loader” that is executed with parameters:
+# FileLoader
+
+Write a "loader" that is executed with parameters:
 path, file_mask
 
 This loader shall connect to DB, look to given path, read a tab separated text file, load file content to DB and move file to {path}/executed
@@ -24,6 +26,4 @@ Update_timestamp (timestamp)
 Example:
 path = /var/loader_files
 file_mask = headers.tsv
-
-DB implementation is up to you and will not be evaluated.
 
