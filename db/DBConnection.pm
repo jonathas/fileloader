@@ -45,17 +45,18 @@ sub execute {
     return $dbh->do($query);
 }
 
-sub closeConnection {
-	$dbh->disconnect();
+sub isRecord {
+	my ( $self, $table, $id ) = @_;
+	my $sth = $dbh->prepare("SELECT * FROM $table WHERE id = $id");
+	$sth->execute();
+	my $numRows = $sth->rows();
+	$sth->finish();
+	closeConnection();
+	return $numRows > 0;
 }
 
-sub doSomething {
-	my $sth = $dbh->prepare("SELECT VERSION()");
-	$sth->execute();
-	my $ver = $sth->fetch();
-	print @$ver;
-	print "\n";
-	$sth->finish();
+sub closeConnection {
+	$dbh->disconnect();
 }
 
 1;
