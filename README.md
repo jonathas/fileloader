@@ -1,8 +1,6 @@
-
 # FileLoader
 
-A "loader" that is executed with parameters:
-path, file_mask
+A "loader" that is executed with parameters: path, file_mask
 
 Then connects to the DB (MySQL), looks to given path, reads a tab separated text file, loads file content to DB and moves file to {path}/executed
 
@@ -37,6 +35,9 @@ path = /var/loader_files
 file_mask = headers.tsv
 ```
 
+----
+
 TODO:
+
 - Improve error handling
 - Implement Unit Tests
