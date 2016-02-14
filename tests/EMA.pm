@@ -1,3 +1,5 @@
+#!/usr/bin/perl
+
 package EMA;
 use strict;
 

@@ -1,0 +1,7 @@
+<?xml version='1.0'?>
+<database>
+	<host>127.0.0.1</host>
+	<user>root</user>
+	<password></password>
+	<dbname>perltest</dbname>
+</database>
