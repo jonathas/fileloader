@@ -4,7 +4,7 @@
 A "loader" that is executed with parameters:
 path, file_mask
 
-Then connects to the DB, looks to given path, reads a tab separated text file, loads file content to DB and moves file to {path}/executed
+Then connects to the DB (MySQL), looks to given path, reads a tab separated text file, loads file content to DB and moves file to {path}/executed
 
 Rules:
 
@@ -36,3 +36,7 @@ Example:
 path = /var/loader_files
 file_mask = headers.tsv
 ```
+
+TODO:
+- Improve error handling
+- Implement Unit Tests

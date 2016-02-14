@@ -44,7 +44,7 @@ sub runImport {
 		print "\nNumber of records imported: $numRowsLoaded\n";
 	}
 	
-	#moveFile();
+	moveFile();
 }
 
 sub readFile {	
@@ -69,7 +69,7 @@ sub readFile {
 sub validateRow {
 	use POSIX qw(strftime);
 	
-	my $errorMsg = "=> Error: row %d was not loaded: ";
+	my $errorMsg = "=> [ERROR]: row %d was not loaded: ";
 	
 	# If the line is empty
 	if (! defined $line[0] && ! defined $line[1]) {
@@ -100,7 +100,7 @@ sub validateRow {
   
 	# If the date is not valid
 	if($line[2] !~ /^(((\d{4})(-)(0[13578]|10|12)(-)(0[1-9]|[12][0-9]|3[01]))|((\d{4})(-)(0[469]|1‌​1)(-)([0][1-9]|[12][0-9]|30))|((\d{4})(-)(02)(-)(0[1-9]|1[0-9]|2[0-8]))|(([02468]‌​[048]00)(-)(02)(-)(29))|(([13579][26]00)(-)(02)(-)(29))|(([0-9][0-9][0][48])(-)(0‌​2)(-)(29))|(([0-9][0-9][2468][048])(-)(02)(-)(29))|(([0-9][0-9][13579][26])(-)(02‌​)(-)(29)))$/) {
-		print "=> Error: row $numRowsRead was loaded with today's date: Date informed is invalid\n";
+		print "=> [ERROR]: row $numRowsRead was loaded with today's date: Date informed is invalid\n";
 		$line[2] = strftime "%Y-%m-%d", localtime;
 		return 1;
 	} 
@@ -109,8 +109,8 @@ sub validateRow {
 }
 
 sub saveToDB {
-	$distro->save(@line);
-	print "=> Loaded: $line[1] ($line[0])\n";
+	my $res = $distro->save(@line);
+	print "=> $res: $line[1] ($line[0])\n";
 }
 
 sub moveFile {

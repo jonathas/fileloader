@@ -23,13 +23,15 @@ sub new {
 sub save {	
 	my ( $self, @distroData ) = @_;
 	if($dbh->isRecord($tableName, $distroData[0])) {
-		return update($distroData[0], @distroData);
+		update($distroData[0], @distroData);
+		return "[UPDATE]";
 	} else {
-		return add(@distroData);
+		insert(@distroData);
+		return "[INSERT]";
 	}
 }
 
-sub add {
+sub insert {
 	my ( $self, @distroData ) = @_;
     my $query = "INSERT INTO $tableName (id, name, date, update_timestamp) VALUES ('$distroData[0]', '$distroData[1]', '$distroData[2]', NOW())";
     return $dbh->execute($query);
