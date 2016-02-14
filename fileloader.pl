@@ -21,7 +21,7 @@ sub main {
 	}
 	 
 	my $filepath = "$ARGV[0]/$ARGV[1]";
-	my @test; 
+	my @line; 
 	
 	open(my $fh, '<:encoding(UTF-8)', $filepath) or die "Could not open file '$filepath' $!";
  
@@ -29,10 +29,15 @@ sub main {
  
 	while (my $row = <$fh>) {
 	  chomp $row;
-	  @test = split /\t/, $row;
-	  #print Dumper($test[0]);
-	  print Dumper($distro->add(@test));
-	  #print "$row\n";
+	  
+	  @line = split /\t/, $row;
+	  
+	  # Jump the header
+	  if ($line[0] eq "ID") {
+	  	next;
+	  }
+	  
+	  $distro->add(@line);
 	}
 
 }

@@ -20,9 +20,9 @@ sub new {
 }
 
 sub add {
-	my ( $self, @firstName ) = @_;
-    #$self->{_firstName} = $firstName if defined($firstName);
-    return @firstName;
+	my ( $self, @distroData ) = @_;
+    my $query = "INSERT INTO distros (id, name, date, update_timestamp) VALUES ('$distroData[0]', '$distroData[1]', '$distroData[2]', NOW())";
+    return $dbh->execute($query);
 }
 
 1;

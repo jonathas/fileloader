@@ -40,6 +40,11 @@ sub openConnection {
     { RaiseError => 1 }, ) or die $DBI::errstr;
 }
 
+sub execute {
+	my ( $self, $query ) = @_;
+    return $dbh->do($query);
+}
+
 sub closeConnection {
 	$dbh->disconnect();
 }
