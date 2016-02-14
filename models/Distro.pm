@@ -14,7 +14,7 @@ my $dbh;
 sub new {
 	my $class = shift;
 	my $self = {};
-	$dbh = ConnectDB->new();
+	$dbh = DBConnection->new();
 	bless $self, $class;
     return $self;
 }
