@@ -37,7 +37,7 @@ sub add {
 
 sub update {
 	my ( $self, $id, @distroData ) = @_;
-    my $query = "UPDATE $tableName SET id = '$id', name = '$distroData[1]', date = '$distroData[2]', update_timestamp = NOW() WHERE id = $id";
+    my $query = "UPDATE $tableName SET id = '$id', name = '$distroData[0]', date = '$distroData[1]', update_timestamp = NOW() WHERE id = '$id'";
     return $dbh->execute($query);
 }
 

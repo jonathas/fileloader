@@ -6,7 +6,6 @@ use warnings;
 use DBI;
 use XML::Simple;
 $XML::Simple::PREFERRED_PARSER = 'XML::Parser';
-use Data::Dumper;
 
 package DBConnection;
 
@@ -47,11 +46,10 @@ sub execute {
 
 sub isRecord {
 	my ( $self, $table, $id ) = @_;
-	my $sth = $dbh->prepare("SELECT * FROM $table WHERE id = $id");
+	my $sth = $dbh->prepare("SELECT * FROM $table WHERE id = '$id'");
 	$sth->execute();
 	my $numRows = $sth->rows();
 	$sth->finish();
-	closeConnection();
 	return $numRows > 0;
 }
 
