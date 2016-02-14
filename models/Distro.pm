@@ -20,7 +20,7 @@ sub new {
     return $self;
 }
 
-sub save {	
+sub save {
 	my ( $self, @distroData ) = @_;
 	if($dbh->isRecord($tableName, $distroData[0])) {
 		update($distroData[0], @distroData);
@@ -33,7 +33,7 @@ sub save {
 
 sub insert {
 	my ( $self, @distroData ) = @_;
-    my $query = "INSERT INTO $tableName (id, name, date, update_timestamp) VALUES ('$distroData[0]', '$distroData[1]', '$distroData[2]', NOW())";
+    my $query = "INSERT INTO $tableName (id, name, date, update_timestamp) VALUES ('$self', '$distroData[0]', '$distroData[1]', NOW())";
     return $dbh->execute($query);
 }
 
