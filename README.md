@@ -28,11 +28,16 @@ Date (date)
 Update_timestamp (timestamp)
 ```
 
+Usage: 
+
+```
+fileloader.pl path file_mask
+```
+
 Example:
 
 ```
-path = /var/loader_files
-file_mask = headers.tsv
+fileloader.pl /var/loader_files headers.tsv
 ```
 
 ----
