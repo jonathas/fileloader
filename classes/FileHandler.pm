@@ -21,18 +21,18 @@ my @line;
 sub new {
 	my $class = shift;
 	my $self = {
-        _path => shift,
-        _fileName  => shift,
-    };
+		_path => shift,
+		_fileName  => shift,
+	};
     
-    $path = $self->{_path};
-    $fileName = $self->{_fileName};
-    $filePath = "$path/$fileName";
+	$path = $self->{_path};
+	$fileName = $self->{_fileName};
+	$filePath = "$path/$fileName";
 	
 	$distro = new Distro();
 	
 	bless $self, $class;
-    return $self;
+	return $self;
 }
 
 sub runImport {	
