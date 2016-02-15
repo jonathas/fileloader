@@ -20,7 +20,7 @@ sub new {
 	readDBConfig();
 	openConnection();
 	bless $self, $class;
-    return $self;
+	return $self;
 }
 
 sub readDBConfig {
@@ -41,7 +41,7 @@ sub openConnection {
 
 sub execute {
 	my ( $self, $query ) = @_;
-    return $dbh->do($query);
+	return $dbh->do($query);
 }
 
 sub isRecord {

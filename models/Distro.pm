@@ -17,7 +17,7 @@ sub new {
 	my $self = {};
 	$dbh = DBConnection->new();
 	bless $self, $class;
-    return $self;
+	return $self;
 }
 
 sub save {
@@ -33,14 +33,14 @@ sub save {
 
 sub insert {
 	my ( $self, @distroData ) = @_;
-    my $query = "INSERT INTO $tableName (id, name, date, update_timestamp) VALUES ('$self', '$distroData[0]', '$distroData[1]', NOW())";
-    return $dbh->execute($query);
+	my $query = "INSERT INTO $tableName (id, name, date, update_timestamp) VALUES ('$self', '$distroData[0]', '$distroData[1]', NOW())";
+	return $dbh->execute($query);
 }
 
 sub update {
 	my ( $self, $id, @distroData ) = @_;
-    my $query = "UPDATE $tableName SET id = '$id', name = '$distroData[0]', date = '$distroData[1]', update_timestamp = NOW() WHERE id = '$id'";
-    return $dbh->execute($query);
+	my $query = "UPDATE $tableName SET id = '$id', name = '$distroData[0]', date = '$distroData[1]', update_timestamp = NOW() WHERE id = '$id'";
+	return $dbh->execute($query);
 }
 
 1;
